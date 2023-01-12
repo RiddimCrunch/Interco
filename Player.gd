@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var _weapon = $Fork
+
 const SPEED = 400
 const ACCEL = 0.4
 
