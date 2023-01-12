@@ -47,9 +47,6 @@ func _process(delta):
 			pass
 		Walk:
 			_animation.travel("Idle")
-			#print("playerX: ", Player.position.x, " FlyX: ", self.position.x)
-			
-			
 			
 			if raycast.is_colliding() || raycast2.is_colliding():
 				var collision
@@ -89,7 +86,6 @@ func killed():
 		print("DROPPED")
 
 func _on_Enemy2_area_area_entered(area):
-	print("entered")
 	if area.name == "Area2D":
 		var player = area.get_parent().get_parent().get_parent() as Player
 		
