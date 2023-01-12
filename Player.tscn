@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Fork.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -89,6 +90,7 @@ transitions = [ "Idle", "Attack", SubResource( 7 ), "Attack", "Idle", SubResourc
 [sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
 [node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
