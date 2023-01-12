@@ -1,51 +1,52 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Assets/Enemies/FlyMoveIdle.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enemies/fly.png" type="Texture" id=1]
 [ext_resource path="res://Enemy2.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Enemies/FlyAttack.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=5]
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 16.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 resource_name = "Attack"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/path = NodePath("FlyAttackSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 5 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "Move"
-length = 0.75
+length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("FlyMoveSprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idle"
+length = 0.2
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
 
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("FlyMoveSprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -56,58 +57,75 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("FlyAttackSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/Attack/node = SubResource( 8 )
+states/Attack/position = Vector2( 665, 107 )
+states/Idle/node = SubResource( 9 )
+states/Idle/position = Vector2( 446, 107 )
+transitions = [ "Idle", "Attack", SubResource( 10 ), "Attack", "Idle", SubResource( 11 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
 [node name="Enemy2" type="KinematicBody2D" groups=["Enemy"]]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2 )
 scale = Vector2( 1.8, 1.8 )
 shape = SubResource( 5 )
 
-[node name="FlyMoveSprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 4
+hframes = 10
 
-[node name="FlyAttackSprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
-hframes = 6
+[node name="Look" type="Node2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="Look" type="Node2D" parent="."]
-
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Enemy2_area" type="Area2D" parent="."]
 rotation = -1.5708
 scale = Vector2( 2.5, 2.5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="HitBox" type="CollisionShape2D" parent="Enemy2_area"]
 rotation = 1.5708
 z_index = 1
 shape = SubResource( 1 )
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack = SubResource( 2 )
-anims/Move = SubResource( 3 )
+anims/Attack = SubResource( 6 )
+anims/Idle = SubResource( 7 )
 anims/RESET = SubResource( 4 )
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -24, 20 )
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 24, 20 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 13 )
+
+[connection signal="area_entered" from="Enemy2_area" to="." method="_on_Enemy2_area_area_entered"]

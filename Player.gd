@@ -50,6 +50,9 @@ func _physics_process(delta):
 			attack_action()
 		IDLE:
 			idle_action()
+			
+	if health <= 0:
+		get_tree().change_scene("res://Scene/End/EndScene.tscn")
 
 
 func move_action():

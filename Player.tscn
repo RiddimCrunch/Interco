@@ -198,7 +198,7 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 24.5 )
+extents = Vector2( 9, 16.75 )
 
 [sub_resource type="CapsuleShape2D" id=16]
 radius = 9.0
@@ -228,8 +228,7 @@ active = true
 parameters/playback = SubResource( 25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 2, -0.5 )
+position = Vector2( 2, 7.25 )
 shape = SubResource( 1 )
 
 [node name="Fork" type="MeshInstance2D" parent="."]
@@ -245,6 +244,6 @@ hframes = 4
 rotation = 0.785398
 
 [node name="HitBox" type="CollisionShape2D" parent="Fork/Sprite2/Area2D"]
-position = Vector2( 0, -15.5 )
+position = Vector2( 3.8147e-06, -9.5 )
 shape = SubResource( 16 )
 disabled = true

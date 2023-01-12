@@ -25,6 +25,7 @@ var manureChance = RandomNumberGenerator.new()
 
 onready var nav = get_parent()
 onready var raycast = $RayCast2D
+onready var _animation = $AnimationTree.get("parameters/playback")
 
 func move_to(_location):
 	var _target = _location
@@ -43,14 +44,19 @@ func _process(delta):
 		Attack:
 			pass
 		Walk:
+			_animation.travel("Walk")
 			#$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
+			
 			if raycast.is_colliding():
 				var collision = raycast.get_collider()
 				#print(collision)
 				if collision.is_in_group("Player"):
+					_animation.travel("Attack")
 					collision.health -= dammage
-					#print(collision.health)
+					print(collision.health)
+				else:
+					_animation.travel("Walk")
 	
 	if health <= 0:
 		killed()

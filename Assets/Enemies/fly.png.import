@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FlyMoveIdle.png-c858aac310a07ef1d939c8823e54f031.stex"
+path="res://.import/fly.png-730d04f76fb6de9f72abbc25326c8aca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/FlyMoveIdle.png"
-dest_files=[ "res://.import/FlyMoveIdle.png-c858aac310a07ef1d939c8823e54f031.stex" ]
+source_file="res://Assets/Enemies/fly.png"
+dest_files=[ "res://.import/fly.png-730d04f76fb6de9f72abbc25326c8aca.stex" ]
 
 [params]
 
