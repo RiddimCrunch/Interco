@@ -2,21 +2,13 @@ extends Node2D
 
 onready var player = $Player
 onready var enemy = $Navigation2D/Enemy
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	#print(player.global_transform.origin)
-
 
 func _on_Timer_timeout():
 	#print(position.distance_to(player.position) - (position.distance_to(enemy.position)))

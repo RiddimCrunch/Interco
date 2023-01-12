@@ -48,4 +48,4 @@ shape = SubResource( 1 )
 rotation = -1.5708
 enabled = true
 
-[connection signal="body_entered" from="Enemy_area" to="." method="_on_Enemy_area_body_entered"]
+[connection signal="area_entered" from="Enemy_area" to="." method="_on_Enemy_area_area_entered"]

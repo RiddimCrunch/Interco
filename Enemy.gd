@@ -52,8 +52,9 @@ func _process(delta):
 				#print(collision)
 				if collision.is_in_group("Player"):
 					collision.health -= dammage
-					#print(collision.health)
-			
+					print(collision.health)
+	if health <= 0:
+		self.scale.x *= 200
 
 func move_to_target():
 	if global_transform.origin.distance_to(path[cur_path_idx]) < threshold:
@@ -68,13 +69,11 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 
 
-func _on_Enemy_area_body_entered(body):
-	if body.name == "Player":
-		player = body as Player
-		print(player.name)
-		var isAttacked = player.get_readyAttack()
-		if isAttacked:
-			health -= 10
-			player.set_readyAttack(0)
-			print("As been hit")
-		pass
+func _on_Enemy_area_area_entered(area):
+	player = area.get_parent().get_parent().get_parent() as Player
+	
+	if player.get_readyAttack():
+		print("Enemy hit")
+		health -= player.dammage
+		print(health)
+	

@@ -3,7 +3,6 @@ class_name Player
 
 onready var _weapon = $Fork
 onready var _AnimationPlayer = $Fork/AnimationPlayer
-onready var _CollisionShape = $CollisionShape2D
 
 const SPEED = 400
 const ACCEL = 0.4
