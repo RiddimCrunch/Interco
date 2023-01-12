@@ -13,7 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(player.global_transform.origin)
+	pass
+	#print(player.global_transform.origin)
 
 
 func _on_Timer_timeout():

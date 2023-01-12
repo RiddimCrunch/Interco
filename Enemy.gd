@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 #var speed = 10
 var damage = 10
-
+export var dammage = 1
 var motion = Vector2.ZERO
 var screen_size = get_viewport_rect().size
 
@@ -23,7 +23,7 @@ var threshold = .1
 var turn_speed = 10
 
 onready var nav = get_parent()
-
+onready var raycast = $RayCast2D
 
 func move_to(_location):
 	var _target = _location
@@ -43,6 +43,12 @@ func _process(delta):
 		Walk:
 			$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
+			if raycast.is_colliding():
+				var collision = raycast.get_collider()
+				print(collision)
+				if collision.is_in_group("Player"):
+					collision.health -= dammage
+					print(collision.health)
 			
 
 func move_to_target():
