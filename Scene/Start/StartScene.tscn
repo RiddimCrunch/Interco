@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scene/Start/StartScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/menu_principal.png" type="Texture" id=2]
@@ -17,6 +17,10 @@
 [ext_resource path="res://Assets/Menu/Customi_Menu.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Menu/Son_Menu.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Menu/CreditsMenu.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Menu/credits_hover.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Menu/Touches_hover.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Menu/customisation_hover.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Menu/son_hover.png" type="Texture" id=21]
 
 [node name="StartScene" type="Control"]
 anchor_right = 1.0
@@ -76,24 +80,28 @@ margin_bottom = 515.0
 margin_right = 250.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 19 )
 
 [node name="Custom" type="TextureButton" parent="SettingsMenu/sousMenu"]
 margin_top = 54.0
 margin_right = 250.0
 margin_bottom = 104.0
 texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 20 )
 
 [node name="Son" type="TextureButton" parent="SettingsMenu/sousMenu"]
 margin_top = 108.0
 margin_right = 250.0
 margin_bottom = 158.0
 texture_normal = ExtResource( 10 )
+texture_hover = ExtResource( 21 )
 
 [node name="Crédit" type="TextureButton" parent="SettingsMenu/sousMenu"]
 margin_top = 162.0
 margin_right = 250.0
 margin_bottom = 212.0
 texture_normal = ExtResource( 11 )
+texture_hover = ExtResource( 18 )
 
 [node name="ControleMenu" type="Popup" parent="."]
 visible = true
