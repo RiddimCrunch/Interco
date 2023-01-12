@@ -424,37 +424,7 @@ tile_data = PoolIntArray( -327694, 3, 0, -327693, 3, 1, -327692, 3, 1, -327691, 
 pause_mode = 2
 position = Vector2( 987, 62 )
 
-[node name="SpawnPoint" type="Node2D" parent="."]
-
-[node name="Position2D" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 965, 36 )
-
-[node name="Position2D2" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 958, 299 )
-
-[node name="Position2D4" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 417, 55 )
-
-[node name="Position2D5" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 414, 559 )
-
-[node name="Position2D6" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 791, 50 )
-
-[node name="Position2D7" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 104, 67 )
-
-[node name="Position2D8" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 103, 318 )
-
-[node name="Position2D9" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 108, 545 )
-
-[node name="Position2D10" type="Position2D" parent="SpawnPoint"]
-position = Vector2( 724, 557 )
-
 [node name="Spawner" type="Node2D" parent="."]
-position = Vector2( 963, 540 )
 script = ExtResource( 3 )
 Enemy = ExtResource( 4 )
 
@@ -483,19 +453,13 @@ visible = false
 curve = SubResource( 2 )
 
 [node name="UI" type="Control" parent="."]
-<<<<<<< HEAD
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-=======
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 41.0
-margin_bottom = 41.0
->>>>>>> 9bda4267eecef4321cd3fc80d2c2c05139d4ab46
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )

@@ -21,7 +21,6 @@
 [ext_resource path="res://Assets/Menu/Touches_hover.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Menu/customisation_hover.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Menu/son_hover.png" type="Texture" id=21]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=22]
 
 [node name="StartScene" type="Control"]
 anchor_right = 1.0
@@ -126,24 +125,6 @@ margin_bottom = 600.0
 texture = ExtResource( 15 )
 expand = true
 
-[node name="Player" parent="CustomMenu" instance=ExtResource( 22 )]
-position = Vector2( 501, 380 )
-scale = Vector2( 3, 3 )
-
-[node name="Green" type="Button" parent="CustomMenu"]
-self_modulate = Color( 0.0901961, 1, 0.368627, 1 )
-margin_left = 424.0
-margin_top = 489.0
-margin_right = 469.0
-margin_bottom = 523.0
-
-[node name="Blue" type="Button" parent="CustomMenu"]
-modulate = Color( 0.00392157, 0.937255, 1, 1 )
-margin_left = 540.0
-margin_top = 489.0
-margin_right = 585.0
-margin_bottom = 523.0
-
 [node name="SonMenu" type="Popup" parent="."]
 visible = true
 margin_right = 40.0
@@ -177,5 +158,3 @@ expand = true
 [connection signal="pressed" from="SettingsMenu/sousMenu/Custom" to="." method="_on_Custom_pressed"]
 [connection signal="pressed" from="SettingsMenu/sousMenu/Son" to="." method="_on_Son_pressed"]
 [connection signal="pressed" from="SettingsMenu/sousMenu/Crédit" to="." method="_on_Crdit_pressed"]
-[connection signal="pressed" from="CustomMenu/Green" to="." method="_on_Green_pressed"]
-[connection signal="pressed" from="CustomMenu/Blue" to="." method="_on_Blue_pressed"]

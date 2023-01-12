@@ -15,8 +15,6 @@ onready var customMenu = $CustomMenu
 onready var sonMenu = $SonMenu
 onready var creditMenu = $CreditMenu
 
-onready var gnome_hat = get_node("CustomMenu/Player/Sprite")
-
 var idx = 0
 
 func _input(event):
@@ -93,12 +91,3 @@ func _on_Son_pressed():
 func _on_Crdit_pressed():
 	creditMenu.show()
 	idx +=1
-	
-	
-func _on_Green_pressed():
-	gnome_hat.texture = preload("res://Assets/Player/Gnome-green.png")
-	Global_Player.curr_sprite = 1
-
-func _on_Blue_pressed():
-	gnome_hat.texture = preload("res://Assets/Player/Gnome-blue.png")
-	Global_Player.curr_sprite = 2
