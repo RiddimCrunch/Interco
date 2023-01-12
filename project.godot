@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Interco"
-run/main_scene="res://Scene/End/EndScene.tscn"
+run/main_scene="res://Scene/Start/StartScene.tscn"
 config/icon="res://icon.png"
 
 [gui]

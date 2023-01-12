@@ -4,6 +4,7 @@ class_name Player
 onready var _weapon = $Fork
 onready var _sprite = $Sprite
 onready var _spriteFork = $Fork/Sprite2
+onready var pauseMenu = $"../Pause/PauseMenu"
 var state_machine
 
 const SPEED = 400
@@ -18,6 +19,16 @@ var lookingRight = true
 
 enum { MOVE, ATTACK, IDLE }
 var states = MOVE
+
+func _input(event):
+	if event.is_action_pressed("escape"):
+		if get_tree().paused != true:
+			get_tree().paused = true
+			pauseMenu.show()
+		else:
+			get_tree().paused = false
+			pauseMenu.hide()
+		
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
