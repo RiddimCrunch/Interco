@@ -1,5 +1,4 @@
 extends MeshInstance2D
-class_name Fork
 
 func _ready():
 	pass # Replace with function body.

@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-﻿61535
-C:/Users/malyk/OneDrive/Bureau/cossins/Godot_v3.5.1-stable_mono_win64/Godot_v3.5.1-stable_mono_win64.exe
-=======
 ﻿60376
 C:/Users/Relia/OneDrive/Desktop/Godot_v3.5.1-stable_mono_win64/Godot_v3.5.1-stable_mono_win64.exe
->>>>>>> 3d632248b06672b45d9e53b47f6e6dbb46fe0b99

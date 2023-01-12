@@ -125,12 +125,9 @@ shape = SubResource( 2 )
 anims/Attack = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/RESET = SubResource( 11 )
-<<<<<<< HEAD
-=======
 
 [node name="AnimationTree" type="AnimationTree" parent="Fork"]
 tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 10 )
->>>>>>> 3d632248b06672b45d9e53b47f6e6dbb46fe0b99
