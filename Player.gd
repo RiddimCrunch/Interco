@@ -7,9 +7,12 @@ const ACCEL = 0.4
 
 var velocity = Vector2.ZERO
 var health = 100
-
 enum { MOVE, ATTACK, IDLE }
 var states = MOVE
+
+
+var idx = 0
+onready var pause = $"../Pause/PauseMenu"
 
 func _ready():
 	pass
@@ -33,7 +36,10 @@ func _physics_process(delta):
 			attack_action()
 		IDLE:
 			pass
-
+	
+	if Input.is_action_just_pressed("escape"):
+		get_tree().paused = true
+		pause.show()
 
 func move_action():
 	var input_vector = get_input()

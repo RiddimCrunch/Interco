@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scene/Start/StartScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/menu_principal.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Assets/Menu/Controle_menu.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Menu/Customi_Menu.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Menu/Son_Menu.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Menu/CreditsMenu.png" type="Texture" id=17]
 
 [node name="StartScene" type="Control"]
 anchor_right = 1.0
@@ -127,6 +128,17 @@ margin_bottom = 600.0
 texture = ExtResource( 16 )
 expand = true
 
+[node name="CreditMenu" type="Popup" parent="."]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CreditBackground" type="TextureRect" parent="CreditMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 17 )
+expand = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -137,3 +149,4 @@ expand = true
 [connection signal="pressed" from="SettingsMenu/sousMenu/Controle" to="." method="_on_Controle_pressed"]
 [connection signal="pressed" from="SettingsMenu/sousMenu/Custom" to="." method="_on_Custom_pressed"]
 [connection signal="pressed" from="SettingsMenu/sousMenu/Son" to="." method="_on_Son_pressed"]
+[connection signal="pressed" from="SettingsMenu/sousMenu/Crédit" to="." method="_on_Crdit_pressed"]
