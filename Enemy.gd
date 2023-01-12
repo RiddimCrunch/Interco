@@ -29,7 +29,6 @@ func move_to(_location):
 	var _target = _location
 
 func _ready():
-	screen_size = get_viewport_rect().size
 	pass
 	
 func _physics_process(delta):
@@ -49,8 +48,11 @@ func _process(delta):
 				if collision.is_in_group("Player"):
 					current_state = Attack
 					collision.health -= dammage
+					
+					$Timer.start()
+					if ($Timer.time_left > 0):
+						speed = 100
 					#print(collision.health)
-			
 
 func move_to_target():
 	if global_transform.origin.distance_to(path[cur_path_idx]) < threshold:
@@ -65,8 +67,10 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	
 
-
-
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Attack":
 		current_state = Walk
+
+
+func _on_Timer_timeout():
+	speed = 350

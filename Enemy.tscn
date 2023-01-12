@@ -93,4 +93,8 @@ anims/Attack = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 anims/Walk = SubResource( 5 )
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
