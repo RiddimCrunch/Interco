@@ -1,16 +1,44 @@
+<<<<<<< HEAD
+[gd_scene load_steps=4 format=2]
+=======
+<<<<<<< HEAD
+[gd_scene load_steps=6 format=2]
+=======
+<<<<<<< HEAD
+[gd_scene load_steps=4 format=2]
+=======
 [gd_scene load_steps=8 format=2]
+>>>>>>> 85a44da20eb4348eae199def1a670aefd95e60a4
+>>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495
+>>>>>>> 72058f8e2fdffe2e7cba862c397070f3023d70c7
 
-[ext_resource path="res://Assets/Enemies/scarabe.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Enemies/bug.PNG" type="Texture" id=1]
 [ext_resource path="res://Enemy.gd" type="Script" id=2]
 
+<<<<<<< HEAD
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 29.0
+=======
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 2.16667, 1 )
+<<<<<<< HEAD
+extents = Vector2( 4, 9.33334 )
 
+=======
+extents = Vector2( 2.16667, 1 )
+>>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495
+
+<<<<<<< HEAD
+=======
 [sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array(  )
 }
 
+<<<<<<< HEAD
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.66667, 2.83333 )
+
+=======
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
 length = 0.5
@@ -59,6 +87,9 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 9, 10 ]
 }
 
+>>>>>>> 85a44da20eb4348eae199def1a670aefd95e60a4
+>>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495
+>>>>>>> 72058f8e2fdffe2e7cba862c397070f3023d70c7
 [node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 3
@@ -67,20 +98,51 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 0 )
-scale = Vector2( 3, 3 )
-shape = SubResource( 1 )
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 72058f8e2fdffe2e7cba862c397070f3023d70c7
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+<<<<<<< HEAD
+=======
+[node name="Enemy_area" type="Area2D" parent="."]
+
+[node name="HurtBox" type="CollisionShape2D" parent="Enemy_area"]
+position = Vector2( 11, 0 )
+rotation = 1.5708
+shape = SubResource( 3 )
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, -0.5 )
+scale = Vector2( 3, 3 )
+shape = SubResource( 1 )
+
+=======
+>>>>>>> 72058f8e2fdffe2e7cba862c397070f3023d70c7
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -4 )
+scale = Vector2( 3, 3 )
+shape = SubResource( 1 )
+
+>>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495
 [node name="Look" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = -1.5708
 enabled = true
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+[connection signal="body_entered" from="Enemy_area" to="." method="_on_Enemy_area_body_entered"]
+=======
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
 scale = Vector2( 2, 2 )
@@ -97,4 +159,9 @@ anims/Walk = SubResource( 5 )
 wait_time = 2.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+<<<<<<< HEAD
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+=======
+>>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495
+>>>>>>> 72058f8e2fdffe2e7cba862c397070f3023d70c7
+>>>>>>> e67ebdb729e38d6b595595a2d3e824e472c9d681

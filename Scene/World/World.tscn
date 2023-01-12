@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
@@ -10,8 +10,14 @@ vertices = PoolVector2Array( 0, 4, 1027, 0, 1022, 601, 2, 602 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 outlines = [ PoolVector2Array( 0, 4, 1027, 0, 1022, 601, 2, 602 ) ]
 
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1024, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 8 )
+}
+
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
+mob_scene = ExtResource( 4 )
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
 
@@ -24,7 +30,6 @@ autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
-autostart = true
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -34,5 +39,8 @@ navpoly = SubResource( 1 )
 [node name="Enemy" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 336, 195 )
 
-[connection signal="timeout" from="Spawner/MobTimer" to="Spawner" method="_on_MobTimer_timeout"]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[connection signal="timeout" from="Spawner/MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
