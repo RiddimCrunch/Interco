@@ -37,6 +37,21 @@ autostart = true
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 1 )
 
+[node name="Enemy3" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 428, 403 )
+
+[node name="Enemy4" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 87, 552 )
+
+[node name="Enemy5" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 799, 457 )
+
+[node name="Enemy6" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 1, 352 )
+
+[node name="Enemy2" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 786, 131 )
+
 [node name="Enemy" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 336, 195 )
 
