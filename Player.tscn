@@ -246,6 +246,5 @@ rotation = 0.785398
 
 [node name="HitBox" type="CollisionShape2D" parent="Fork/Sprite2/Area2D"]
 position = Vector2( 0, -15.5 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 16 )
 disabled = true

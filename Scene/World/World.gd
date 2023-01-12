@@ -10,7 +10,6 @@ export(PackedScene) var mob_scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	pass # Replace with function body.
 
 
@@ -21,8 +20,7 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	#print(enemy.position.distance_to(player.position) - (enemy.position.distance_to(enemy.position)))
-	
+	#print(position.distance_to(player.position) - (position.distance_to(enemy.position)))
 	#if (position.distance_to(player.position) - (position.distance_to(enemy.position)) < 200 and position.distance_to(player.position) - (position.distance_to(enemy.position)) > -200):
 	get_tree().call_group("Enemy", 'get_target_path', player.global_transform.origin)
 	#else:
