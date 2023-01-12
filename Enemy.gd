@@ -26,6 +26,7 @@ var manureChance = RandomNumberGenerator.new()
 onready var nav = get_parent()
 onready var raycast = $RayCast2D
 onready var _animation = $AnimationTree.get("parameters/playback")
+onready var _enemy = $"."
 
 func move_to(_location):
 	var _target = _location
@@ -84,6 +85,7 @@ func _on_Enemy_area_area_entered(area):
 
 func killed():
 	self.queue_free()
+	_enemy = null
 		
 	var rand_chance = manureChance.randf_range(0, 100)
 	if rand_chance > 0 && rand_chance <= 10:
