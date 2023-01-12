@@ -26,7 +26,3 @@ func _on_Timer_timeout():
 	else:
 		get_tree().call_group("Enemy", 'get_target_path', Vector2(OS.window_size.x/2, OS.window_size.y/2))
 	
-
-
-func _on_MobTimer_timeout():
-	pass

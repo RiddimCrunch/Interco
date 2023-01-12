@@ -39,9 +39,8 @@ func _physics_process(delta):
 func _process(delta):
 	match current_state:
 		Attack:
-			$AnimationPlayer.play("Attack")
+			pass
 		Walk:
-			$AnimationPlayer.play("Walk")
 			$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
 			if raycast.is_colliding():
@@ -49,12 +48,7 @@ func _process(delta):
 				print(collision)
 				if collision.is_in_group("Player"):
 					collision.health -= dammage
-					current_state = Attack
 					print(collision.health)
-					
-					$Timer.start()
-					if ($Timer.time_left > 0):
-						speed = 100
 			
 
 func move_to_target():
@@ -68,11 +62,5 @@ func move_to_target():
 		
 func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
-
-func _on_Timer_timeout():
-	speed = 350
-
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "Attack":
-		current_state = Walk
+	
+	
