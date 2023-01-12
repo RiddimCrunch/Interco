@@ -103,14 +103,3 @@ shape = SubResource( 2 )
 anims/Attack = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/RESET = SubResource( 11 )
-<<<<<<< HEAD
-=======
-
-[node name="AnimationTree" type="AnimationTree" parent="Fork"]
-tree_root = SubResource( 9 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 10 )
-
-[connection signal="body_entered" from="Fork/Sprite2/Area2D" to="." method="_on_Area2D_body_entered"]
->>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495

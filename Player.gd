@@ -48,21 +48,17 @@ func move_action():
 	velocity = move_and_slide(lerp(velocity, input_vector * SPEED, ACCEL), Vector2.UP)
 
 func attack_action():
-<<<<<<< HEAD
 	_AnimationPlayer.play("Attack")
 	readyAttack = true
 
 func get_readyAttack():
 	return readyAttack
+	
+func useless():
+	pass
 
 func set_readyAttack(value):
 	readyAttack = value
-=======
-	
-	$Fork/AnimationPlayer.play("Attack");
-	
-	print("ATTACK")
->>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495
 
 func get_input():
 	var input_vector := Vector2.ZERO
@@ -70,7 +66,4 @@ func get_input():
 	input_vector.y = float(Input.is_action_pressed("down")) - float(Input.is_action_pressed("up"))
 	
 	return input_vector.normalized() if input_vector.length() > 1 else input_vector
-<<<<<<< HEAD
 
-=======
->>>>>>> 882bf63e75c5343099e8d44a043378729bf1c495

@@ -2,7 +2,6 @@ extends Node2D
 
 onready var player = $Player
 onready var enemy = $Navigation2D/Enemy
-export(PackedScene) var mob_scene
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,8 +24,3 @@ func _on_Timer_timeout():
 		get_tree().call_group("Enemy", 'get_target_path', player.global_transform.origin)
 	else:
 		get_tree().call_group("Enemy", 'get_target_path', Vector2(OS.window_size.x/2, OS.window_size.y/2))
-	
-
-
-func _on_MobTimer_timeout():
-	pass
