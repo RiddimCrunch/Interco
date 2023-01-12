@@ -90,6 +90,12 @@ escape={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+
 [mono]
 
 project/assembly_name="Interco"

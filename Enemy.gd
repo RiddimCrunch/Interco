@@ -45,7 +45,7 @@ func _process(delta):
 			pass
 		Walk:
 			_animation.travel("Walk")
-			#$Look.look_at(Player.global_transform.origin)
+			$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
 			
 			if raycast.is_colliding():
@@ -78,9 +78,9 @@ func _on_Enemy_area_area_entered(area):
 		var player = area.get_parent().get_parent().get_parent() as Player
 		
 		if player.get_readyAttack():
-			print("Enemy hit")
+			#print("Enemy hit")
 			health -= player.dammage
-			print(health)
+			#print(health)
 
 func killed():
 	self.queue_free()
