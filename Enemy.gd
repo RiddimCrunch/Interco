@@ -4,10 +4,6 @@ extends KinematicBody2D
 var damage = 10
 export var dammage = 1
 var motion = Vector2.ZERO
-var screen_size = get_viewport_rect().size
-
-onready var player = get_node("res://Player.tscn") 
-
 enum {
 	Attack,
 	Walk
@@ -21,6 +17,8 @@ var target = null
 var velocity = Vector2.ZERO
 var threshold = .1
 var turn_speed = 10
+var health = 20
+var player : KinematicBody2D
 
 onready var nav = get_parent()
 onready var raycast = $RayCast2D
@@ -29,7 +27,6 @@ func move_to(_location):
 	var _target = _location
 
 func _ready():
-	screen_size = get_viewport_rect().size
 	pass
 	
 func _physics_process(delta):
@@ -49,6 +46,10 @@ func _process(delta):
 				if collision.is_in_group("Player"):
 					collision.health -= dammage
 					print(collision.health)
+					
+					$Timer.start()
+					if ($Timer.time_left > 0):
+						speed = 100
 			
 
 func move_to_target():
@@ -64,3 +65,7 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	
 	
+
+
+func _on_Timer_timeout():
+	speed = 350
