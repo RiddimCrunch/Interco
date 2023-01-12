@@ -2,15 +2,24 @@
 
 importer="texture"
 type="StreamTexture"
+<<<<<<< HEAD:Assets/Enemies/fly.png.import
 path="res://.import/fly.png-730d04f76fb6de9f72abbc25326c8aca.stex"
+=======
+path="res://.import/FlyAttack.png-ff4cc38a13bf2986784c9093e3dee1ad.stex"
+>>>>>>> 8157dbce42b175d8952b37a981238cb2767a1ab8:FlyAttack.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< HEAD:Assets/Enemies/fly.png.import
 source_file="res://Assets/Enemies/fly.png"
 dest_files=[ "res://.import/fly.png-730d04f76fb6de9f72abbc25326c8aca.stex" ]
+=======
+source_file="res://FlyAttack.png"
+dest_files=[ "res://.import/FlyAttack.png-ff4cc38a13bf2986784c9093e3dee1ad.stex" ]
+>>>>>>> 8157dbce42b175d8952b37a981238cb2767a1ab8:FlyAttack.png.import
 
 [params]
 
