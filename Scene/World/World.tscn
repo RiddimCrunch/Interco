@@ -24,7 +24,6 @@ autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
-autostart = true
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
