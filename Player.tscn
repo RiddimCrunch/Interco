@@ -131,3 +131,5 @@ tree_root = SubResource( 9 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 10 )
+
+[connection signal="body_entered" from="Fork/Sprite2/Area2D" to="." method="_on_Area2D_body_entered"]

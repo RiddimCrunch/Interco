@@ -39,16 +39,17 @@ func _physics_process(delta):
 func _process(delta):
 	match current_state:
 		Attack:
-			pass
+			$AnimationPlayer.play("Attack")
 		Walk:
+			$AnimationPlayer.play("Walk")
 			$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
 			if raycast.is_colliding():
 				var collision = raycast.get_collider()
-				print(collision)
 				if collision.is_in_group("Player"):
+					current_state = Attack
 					collision.health -= dammage
-					print(collision.health)
+					#print(collision.health)
 			
 
 func move_to_target():
@@ -63,4 +64,9 @@ func move_to_target():
 func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 	
-	
+
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Attack":
+		current_state = Walk
