@@ -6,12 +6,14 @@ onready var optionBackground = $SettingsMenu/OptionBackground
 onready var controleBackground = $ControleMenu/ControleBackground
 onready var customBackground = $CustomMenu/CustomBackground
 onready var sonBackground = $SonMenu/SonBackground
+onready var creditBackground = $CreditMenu/CreditBackground
 onready var mainMenu = $MainMenu
 onready var sousMenu = $SettingsMenu/sousMenu
 onready var settingMenu = $SettingsMenu
 onready var controleMenu = $ControleMenu
 onready var customMenu = $CustomMenu
 onready var sonMenu = $SonMenu
+onready var creditMenu = $CreditMenu
 
 var idx = 0
 
@@ -35,6 +37,7 @@ func _process(delta):
 	controleBackground.set_size(offsetVector)
 	customBackground.set_size(offsetVector)
 	sonBackground.set_size(offsetVector)
+	creditBackground.set_size(offsetVector)
 	mainMenu.set_position(offsetVectorMainMenu)
 	
 	if OS.window_fullscreen == true:
@@ -55,6 +58,7 @@ func _process(delta):
 			controleMenu.hide()
 			customMenu.hide()
 			sonMenu.hide()
+			creditMenu.hide()
 		
 func _on_Start_pressed():
 	get_tree().change_scene("res://Scene/World/World.tscn")
@@ -81,4 +85,9 @@ func _on_Custom_pressed():
 
 func _on_Son_pressed():
 	sonMenu.show()
+	idx +=1
+
+
+func _on_Crdit_pressed():
+	creditMenu.show()
 	idx +=1
