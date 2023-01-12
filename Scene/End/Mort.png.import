@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/FlyAttack.png-ff4cc38a13bf2986784c9093e3dee1ad.stex"
+path="res://.import/Mort.png-37c9e5f536240092a97bbbccaef633a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FlyAttack.png"
-dest_files=[ "res://.import/FlyAttack.png-ff4cc38a13bf2986784c9093e3dee1ad.stex" ]
+source_file="res://Scene/End/Mort.png"
+dest_files=[ "res://.import/Mort.png-37c9e5f536240092a97bbbccaef633a5.stex" ]
 
 [params]
 
