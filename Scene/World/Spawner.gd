@@ -19,6 +19,7 @@ func _ready():
 	timer.start()
 
 func _process(delta):
+	scene_root = get_parent()
 	array = get_tree().get_nodes_in_group("Enemy")
 
 
@@ -26,6 +27,7 @@ func _on_MobTimer_timeout():
 	if enemies_remaining_to_spawn:
 		if len(array) < limit_enemy:
 				enemy = Enemy.instance()
+				print(enemy)
 				#scene_root.add_child(enemy)
 				enemies_remaining_to_spawn -= 1
 				print(enemies_remaining_to_spawn)

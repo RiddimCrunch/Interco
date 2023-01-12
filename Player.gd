@@ -11,13 +11,20 @@ const ACCEL = 0.4
 
 var velocity = Vector2.ZERO
 var health = 100
+<<<<<<< HEAD
 var dammage = 10
 var readyAttack = false
 
 var lookingRight = true
 
+=======
+>>>>>>> 34a6bfa0d962fb33512c2a6bf5b220f4c3dc8aee
 enum { MOVE, ATTACK, IDLE }
 var states = MOVE
+var paused = 0
+
+var idx = 0
+onready var pause = $"../Pause/PauseMenu"
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -49,9 +56,19 @@ func _physics_process(delta):
 		ATTACK:
 			attack_action()
 		IDLE:
+<<<<<<< HEAD
 			idle_action()
 
 
+=======
+			pass
+			
+	if Input.is_action_pressed("escape"):
+			get_tree().paused = true
+			pause.show()
+			
+			
+>>>>>>> 34a6bfa0d962fb33512c2a6bf5b220f4c3dc8aee
 func move_action():
 	state_machine.travel("Walk")
 	var input_vector = get_input()

@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
 [ext_resource path="res://Scene/World/Spawner.gd" type="Script" id=3]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Menu/Pause.png" type="Texture" id=5]
+[ext_resource path="res://Scene/World/Pause.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Menu/Continuer.png" type="Texture" id=7]
+[ext_resource path="res://Assets/TileSet/Bavkground.tscn" type="PackedScene" id=8]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 0, 4, 1027, 0, 1022, 601, 2, 602 )
@@ -19,7 +23,10 @@ _data = {
 script = ExtResource( 2 )
 mob_scene = ExtResource( 4 )
 
+[node name="Bavkground" parent="." instance=ExtResource( 8 )]
+
 [node name="Player" parent="." groups=["Player"] instance=ExtResource( 1 )]
+pause_mode = 2
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -58,5 +65,38 @@ position = Vector2( 336, 195 )
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 2 )
 
-[connection signal="timeout" from="Spawner/MobTimer" to="." method="_on_MobTimer_timeout"]
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+
+[node name="PauseMenu" type="Popup" parent="Pause"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="PauseBackground" type="TextureRect" parent="Pause/PauseMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+
+[node name="PauseMenu" type="VBoxContainer" parent="Pause/PauseMenu"]
+margin_left = 385.0
+margin_top = 300.0
+margin_right = 635.0
+margin_bottom = 350.0
+
+[node name="Resume" type="TextureButton" parent="Pause/PauseMenu/PauseMenu"]
+margin_right = 250.0
+margin_bottom = 50.0
+texture_normal = ExtResource( 7 )
+
+[connection signal="timeout" from="Spawner/MobTimer" to="Spawner" method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Pause/PauseMenu/PauseMenu/Resume" to="Pause" method="_on_Resume_pressed"]
