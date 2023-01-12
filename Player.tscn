@@ -198,7 +198,7 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 16.75 )
+extents = Vector2( 9, 24.5 )
 
 [sub_resource type="CapsuleShape2D" id=16]
 radius = 9.0
@@ -239,6 +239,10 @@ position = Vector2( 8, 11 )
 rotation = 0.785398
 texture = ExtResource( 1 )
 hframes = 4
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Fork/Sprite2"]
+position = Vector2( -12.7279, -1.41422 )
+rotation = -0.785398
 
 [node name="Area2D" type="Area2D" parent="Fork/Sprite2"]
 rotation = 0.785398
