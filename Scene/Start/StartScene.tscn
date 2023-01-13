@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Scene/Start/StartScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/menu_principal.png" type="Texture" id=2]
@@ -21,6 +21,99 @@
 [ext_resource path="res://Assets/Menu/Touches_hover.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Menu/customisation_hover.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Menu/son_hover.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Player/Gnome-blue.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Player/Gnome-green.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Player/Gnome.png" type="Texture" id=24]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 22 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 22 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 22 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 22 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 22 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 23 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 23 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 23 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 23 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 23 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 24 )
+region = Rect2( 48, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 24 )
+region = Rect2( 96, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 24 )
+region = Rect2( 144, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 24 )
+region = Rect2( 192, 0, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 24 )
+region = Rect2( 240, 0, 48, 48 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "IdleBlue",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "IdleGreen",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "IdleRed",
+"speed": 5.0
+} ]
 
 [node name="StartScene" type="Control"]
 anchor_right = 1.0
@@ -125,6 +218,31 @@ margin_bottom = 600.0
 texture = ExtResource( 15 )
 expand = true
 
+[node name="CustomGnome" type="AnimatedSprite" parent="CustomMenu"]
+scale = Vector2( 4, 4 )
+frames = SubResource( 19 )
+animation = "IdleRed"
+frame = 4
+playing = true
+
+[node name="Green" type="Button" parent="CustomMenu"]
+self_modulate = Color( 0.0784314, 0.529412, 0.117647, 1 )
+margin_right = 20.0
+margin_bottom = 20.0
+rect_scale = Vector2( 3, 2 )
+
+[node name="Red" type="Button" parent="CustomMenu"]
+self_modulate = Color( 0.847059, 0.188235, 0.188235, 1 )
+margin_right = 20.0
+margin_bottom = 20.0
+rect_scale = Vector2( 3, 2 )
+
+[node name="Blue" type="Button" parent="CustomMenu"]
+self_modulate = Color( 0.172549, 0.301961, 0.823529, 1 )
+margin_right = 20.0
+margin_bottom = 20.0
+rect_scale = Vector2( 3, 2 )
+
 [node name="SonMenu" type="Popup" parent="."]
 visible = true
 margin_right = 40.0
@@ -158,3 +276,6 @@ expand = true
 [connection signal="pressed" from="SettingsMenu/sousMenu/Custom" to="." method="_on_Custom_pressed"]
 [connection signal="pressed" from="SettingsMenu/sousMenu/Son" to="." method="_on_Son_pressed"]
 [connection signal="pressed" from="SettingsMenu/sousMenu/Crédit" to="." method="_on_Crdit_pressed"]
+[connection signal="pressed" from="CustomMenu/Green" to="." method="_on_Green_pressed"]
+[connection signal="pressed" from="CustomMenu/Red" to="." method="_on_Red_pressed"]
+[connection signal="pressed" from="CustomMenu/Blue" to="." method="_on_Blue_pressed"]

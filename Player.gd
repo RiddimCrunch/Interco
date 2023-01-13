@@ -7,7 +7,7 @@ onready var _spriteFork = $Fork/Sprite2
 onready var pauseMenu = $"../Pause/PauseMenu"
 onready var camIn = $Sprite/Camera2D
 onready var camOut = $"../Camera2D"
-onready var background = $"../Pause/PauseMenu/PauseBackground"
+#onready var background = $"../Pause/PauseMenu/PauseBackground"
 var state_machine
 
 const SPEED = 400
@@ -24,6 +24,7 @@ enum { MOVE, ATTACK, IDLE }
 var states = MOVE
 
 func _ready():
+	_sprite.texture = Global.curr_gnome
 	state_machine = $AnimationTree.get("parameters/playback")
 	
 func _input(event):
@@ -41,7 +42,7 @@ func _input(event):
 
 	
 func _physics_process(delta):
-	background.set_size(Vector2(OS.window_size.x, OS.window_size.y))
+	#background.set_size(Vector2(OS.window_size.x, OS.window_size.y))
 	if get_tree().paused != true:
 		var input_vector = get_input()
 		
