@@ -3,6 +3,7 @@ extends Node2D
 var enemy1 = preload("res://Enemy.tscn")
 var enemy2 = preload("res://Enemy2.tscn")
 var enemy3 = preload("res://Enemy3.tscn")
+var mantis = preload("res://Mantis.tscn")
 
 export var num_enemies = 50
 export var second_between_spawns: float = 1
@@ -17,7 +18,6 @@ var pos_list = ["TL", "TM", "TR",
 
 onready var timer = $MobTimer
 
-var wave = 0
 var enemies_remaining_to_spawn
 var array
 var enemy
@@ -55,6 +55,12 @@ func _on_MobTimer_timeout():
 		print("This was enemy: ", enemies_remaining_to_spawn)
 		enemies_remaining_to_spawn -= 1
 	
-	elif enemies_remaining_to_spawn == 0:
+	elif enemies_remaining_to_spawn == 0 && array == []:
 		enemies_remaining_to_spawn -= 1
 		print("Enemy is... Mantis!")
+		
+		randomize()
+		
+		var boss = mantis.instance()
+		scene_root.add_child(boss)
+		boss.position = get_node("BossPosition").position
