@@ -1,19 +1,22 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
-[ext_resource path="res://Scene/World/SpawnPoints.gd" type="Script" id=3]
+[ext_resource path="res://Hearth.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Menu/Pause.png" type="Texture" id=5]
 [ext_resource path="res://Scene/World/Pause.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Menu/Continuer.png" type="Texture" id=7]
 [ext_resource path="res://Assets/temp/Gazon.png" type="Texture" id=8]
+[ext_resource path="res://Enemy2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/temp/Fence_coin.png" type="Texture" id=11]
 [ext_resource path="res://Assets/temp/Fence_Horizontal.png" type="Texture" id=12]
 [ext_resource path="res://Assets/temp/Fence_Vertical.png" type="Texture" id=13]
 [ext_resource path="res://Assets/TileSet/Cote_Gauche.png" type="Texture" id=14]
 [ext_resource path="res://Assets/temp/decore_exterieur_eau.png" type="Texture" id=15]
+[ext_resource path="res://Mantis.tscn" type="PackedScene" id=16]
+[ext_resource path="res://enemy3.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -440,7 +443,7 @@ percent_visible = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 pause_mode = 2
-position = Vector2( 512, 242 )
+position = Vector2( 987, 62 )
 collision_mask = 6
 
 [node name="Spawner" type="Node2D" parent="."]
@@ -456,47 +459,28 @@ autostart = true
 [node name="Navigation2D" type="Navigation2D" parent="."]
 position = Vector2( 506, 334 )
 
+[node name="Hearth" parent="Navigation2D" instance=ExtResource( 3 )]
+position = Vector2( 317, -13 )
+
+[node name="Hearth2" parent="Navigation2D" instance=ExtResource( 3 )]
+position = Vector2( 372, -10 )
+
+[node name="Enemy3" parent="Navigation2D" instance=ExtResource( 17 )]
+position = Vector2( 476, -21 )
+
+[node name="Enemy2" parent="Navigation2D" instance=ExtResource( 9 )]
+position = Vector2( 102, 73 )
+
+[node name="Enemy" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 207, 312 )
+
+[node name="Mantis" parent="Navigation2D" instance=ExtResource( 16 )]
+position = Vector2( 605, -205 )
+
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 visible = false
 position = Vector2( 0, 2 )
 navpoly = SubResource( 29 )
-
-[node name="SpawnPoints" type="Node2D" parent="Navigation2D"]
-position = Vector2( 0, 2 )
-script = ExtResource( 3 )
-
-[node name="TL" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -466, -297 )
-
-[node name="TM" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -4, -302 )
-
-[node name="TR" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 479, -299 )
-
-[node name="ML" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -479, -31 )
-
-[node name="MR" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 473, -23 )
-
-[node name="BL" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -463, 203 )
-
-[node name="BM" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -15, 215 )
-
-[node name="BR" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 474, 219 )
-
-[node name="MobTimer" type="Timer" parent="Navigation2D/SpawnPoints"]
-autostart = true
-
-[node name="CoolDown" type="Timer" parent="Navigation2D/SpawnPoints"]
-wait_time = 10.0
-
-[node name="SpawnRate" type="Timer" parent="Navigation2D/SpawnPoints"]
-wait_time = 2.0
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 2 )
@@ -535,6 +519,4 @@ position = Vector2( 512, 300 )
 
 [connection signal="timeout" from="Spawner/MobTimer" to="Spawner" method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="Navigation2D/SpawnPoints/MobTimer" to="Navigation2D/SpawnPoints" method="_on_MobTimer_timeout"]
-[connection signal="timeout" from="Navigation2D/SpawnPoints/CoolDown" to="Navigation2D/SpawnPoints" method="_on_CoolDown_timeout"]
 [connection signal="pressed" from="Pause/PauseMenu/PauseMenu/Resume" to="Pause" method="_on_Resume_pressed"]

@@ -28,7 +28,7 @@ onready var raycast = $RayCast2D
 onready var _animation = $AnimationTree.get("parameters/playback")
 onready var _enemy = $"."
 onready var _hearth = preload("res://Hearth.tscn")
-onready var _playerHealthBar = $"../../UI/PlayerHealth"
+
 onready var _TreeHealthBar = $"../../Tree/TreeHealthBar"
 
 func move_to(_location):
