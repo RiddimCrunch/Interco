@@ -5,7 +5,7 @@ var treeDamage = 3
 var health = 30
 export var dammage = 1
 var motion = Vector2.ZERO
-var screen_size = get_viewport_rect().size
+#var screen_size = get_viewport_rect().size
 
 enum {
 	Attack,
@@ -33,7 +33,7 @@ func move_to(_location):
 	var _target = _location
 
 func _ready():
-	screen_size = get_viewport_rect().size
+	#screen_size = get_viewport_rect().size
 	manureChance.randomize()
 	pass
 	
