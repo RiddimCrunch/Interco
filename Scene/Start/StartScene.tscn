@@ -222,6 +222,7 @@ expand = true
 scale = Vector2( 4, 4 )
 frames = SubResource( 19 )
 animation = "IdleRed"
+frame = 5
 frame = 2
 playing = true
 
