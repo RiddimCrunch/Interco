@@ -115,18 +115,12 @@ func _on_Green_pressed():
 	
 	Global.curr_gnome = green_hat
 	
-	#gnome_sprite.texture = green_hat.texture
-	
 func _on_Blue_pressed():
 	$CustomMenu/CustomGnome.animation = "IdleBlue"
 	
 	Global.curr_gnome = blue_hat
-	
-	#gnome_sprite.texture = blue_hat.texture
 
 func _on_Red_pressed():
 	$CustomMenu/CustomGnome.animation = "IdleRed"
 	
 	Global.curr_gnome = red_hat
-
-	#gnome_sprite.texture = red_hat.texture
