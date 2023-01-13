@@ -197,7 +197,6 @@ texture_normal = ExtResource( 11 )
 texture_hover = ExtResource( 18 )
 
 [node name="ControleMenu" type="Popup" parent="."]
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -208,7 +207,6 @@ texture = ExtResource( 14 )
 expand = true
 
 [node name="CustomMenu" type="Popup" parent="."]
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -222,7 +220,7 @@ expand = true
 scale = Vector2( 4, 4 )
 frames = SubResource( 19 )
 animation = "IdleRed"
-frame = 5
+frame = 1
 playing = true
 
 [node name="Green" type="Button" parent="CustomMenu"]
@@ -244,7 +242,6 @@ margin_bottom = 20.0
 rect_scale = Vector2( 3, 2 )
 
 [node name="SonMenu" type="Popup" parent="."]
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 

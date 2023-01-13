@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
@@ -8,12 +8,17 @@
 [ext_resource path="res://Scene/World/Pause.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Menu/Continuer.png" type="Texture" id=7]
 [ext_resource path="res://Assets/temp/Gazon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Menu/Main_Menu_hover.png" type="Texture" id=9]
 [ext_resource path="res://Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/temp/Fence_coin.png" type="Texture" id=11]
 [ext_resource path="res://Assets/temp/Fence_Horizontal.png" type="Texture" id=12]
 [ext_resource path="res://Assets/temp/Fence_Vertical.png" type="Texture" id=13]
 [ext_resource path="res://Assets/TileSet/Cote_Gauche.png" type="Texture" id=14]
 [ext_resource path="res://Assets/temp/decore_exterieur_eau.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Menu/Main_Menu.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Menu/Quitter.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Menu/Quitter_hover.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Menu/Continuer_hover.png" type="Texture" id=26]
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -504,7 +509,6 @@ curve = SubResource( 2 )
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )
@@ -529,6 +533,21 @@ margin_bottom = 350.0
 margin_right = 250.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 26 )
+
+[node name="MainMenu" type="TextureButton" parent="Pause/PauseMenu/PauseMenu"]
+margin_top = 54.0
+margin_right = 250.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 9 )
+
+[node name="Quit" type="TextureButton" parent="Pause/PauseMenu/PauseMenu"]
+margin_top = 108.0
+margin_right = 250.0
+margin_bottom = 158.0
+texture_normal = ExtResource( 18 )
+texture_hover = ExtResource( 22 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
@@ -539,3 +558,5 @@ position = Vector2( 512, 300 )
 [connection signal="timeout" from="Navigation2D/SpawnPoints/MobTimer" to="Navigation2D/SpawnPoints" method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="Navigation2D/SpawnPoints/CoolDown" to="Navigation2D/SpawnPoints" method="_on_CoolDown_timeout"]
 [connection signal="pressed" from="Pause/PauseMenu/PauseMenu/Resume" to="Pause" method="_on_Resume_pressed"]
+[connection signal="pressed" from="Pause/PauseMenu/PauseMenu/MainMenu" to="Pause" method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Pause/PauseMenu/PauseMenu/Quit" to="Pause" method="_on_Quit_pressed"]
