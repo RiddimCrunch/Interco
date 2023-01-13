@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 #var speed = 10
-var damage = 10
+var treeDamage = 2
 var health = 20
 export var dammage = 1
 var motion = Vector2.ZERO
@@ -46,15 +46,19 @@ func _process(delta):
 			pass
 		Walk:
 			_animation.travel("Walk")
-			$Look.look_at(Player.global_transform.origin)
+			#$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
 			
 			if raycast.is_colliding():
 				var collision = raycast.get_collider()
-				#print(collision)
+				
 				if collision.is_in_group("Player"):
 					_animation.travel("Attack")
 					collision.health -= dammage
+					#print(collision.health)
+				elif collision.is_in_group("Tree"):
+					_animation.travel("Attack")
+					collision.health -= treeDamage
 					print(collision.health)
 				else:
 					_animation.travel("Walk")

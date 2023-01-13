@@ -16,7 +16,6 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	#print(position.distance_to(player.position) - (position.distance_to(enemy.position)))
-	print(position)
 	if is_instance_valid(enemy):
 		if enemy.position != null and (position.distance_to(player.position) - (position.distance_to(enemy.position)) < 200) and (position.distance_to(player.position) - (position.distance_to(enemy.position)) > -200):
 			get_tree().call_group("Enemy", 'get_target_path', player.global_transform.origin)

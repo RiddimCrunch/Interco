@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 #var speed = 10
 var treeDamage = 3
-var health = 10
+var health = 30
 export var dammage = 1
 var motion = Vector2.ZERO
 var screen_size = get_viewport_rect().size
@@ -13,7 +13,7 @@ enum {
 }
 onready var Player = $"../../Player"
 var current_state = Walk
-export var speed = 350
+export var speed = 250
 var path = []
 var cur_path_idx = 0
 var target = null
@@ -46,15 +46,16 @@ func _process(delta):
 		Attack:
 			pass
 		Walk:
-			_animation.travel("Idle")
+			_animation.travel("Walk")
 			
 			if raycast.is_colliding() || raycast2.is_colliding():
 				var collision
 				if raycast.is_colliding():
 					collision = raycast.get_collider()
+					self.scale.x = 1
 				else:
 					collision = raycast2.get_collider()
-					self.scale.x = -1.5
+					self.scale.x = -1
 				
 				if collision.is_in_group("Player"):
 					_animation.travel("Attack")
@@ -65,7 +66,7 @@ func _process(delta):
 					collision.health -= treeDamage
 					print(collision.health)
 				else:
-					_animation.travel("Idle")
+					_animation.travel("Walk")
 	
 	if health <= 0:
 		killed()
@@ -89,7 +90,7 @@ func killed():
 	if rand_chance > 0 && rand_chance <= 10:
 		print("DROPPED")
 
-func _on_Enemy2_area_area_entered(area):
+func _on_Enemy3_area_area_entered(area):
 	if area.name == "Area2D":
 		var player = area.get_parent().get_parent().get_parent() as Player
 		
