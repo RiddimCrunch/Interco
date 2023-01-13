@@ -88,15 +88,11 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 
 func killed():
-	var position = _enemy.position
 	self.queue_free()
 		
 	var rand_chance = manureChance.randf_range(0, 100)
-	if rand_chance >= 0 && rand_chance <= 25:
-		
-		var bonus = _hearth.instance()
-		bonus.set_position(position)
-		nav.add_child(bonus)
+	if rand_chance > 0 && rand_chance <= 10:
+		print("DROPPED")
 
 func _on_Enemy2_area_area_entered(area):
 	if area.name == "Area2D":
