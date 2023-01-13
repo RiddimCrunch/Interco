@@ -27,13 +27,13 @@ func _on_MobTimer_timeout():
 	if enemies_remaining_to_spawn:
 		if len(array) < limit_enemy:
 				enemy = Enemy.instance()
-				print(enemy)
+				#print(enemy)
 				#scene_root.add_child(enemy)
 				enemies_remaining_to_spawn -= 1
-				print(enemies_remaining_to_spawn)
+				#print(enemies_remaining_to_spawn)
 	if enemies_remaining_to_spawn == 0:
 		array = get_tree().get_nodes_in_group("Enemy")
-		print(array)
+		#print(array)
 		if array == []:
 			if num_enemies > 50:
 				num_enemies = 50
