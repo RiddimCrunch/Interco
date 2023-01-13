@@ -28,6 +28,10 @@ onready var nav = get_parent()
 onready var raycast = $RayCast2D
 onready var raycast2 = $RayCast2D2
 onready var _animation = $AnimationTree.get("parameters/playback")
+onready var _enemy = $"."
+onready var _hearth = preload("res://Hearth.tscn")
+onready var _playerHealthBar = $"../../UI/PlayerHealth"
+onready var _TreeHealthBar = $"../../Tree/TreeHealthBar"
 
 func move_to(_location):
 	var _target = _location
@@ -60,13 +64,13 @@ func _process(delta):
 				if collision.is_in_group("Player"):
 					_animation.travel("Attack")
 					collision.health -= dammage
+					collision.get_node("PlayerHealthBar").value = collision.health
 					#print(collision.health)
 				elif collision.is_in_group("Tree"):
 					_animation.travel("Attack")
 					collision.health -= treeDamage
-					print(collision.health)
-				else:
-					_animation.travel("Idle")
+					#print(collision.health)
+					_TreeHealthBar.value = collision.health
 	
 	if health <= 0:
 		killed()
@@ -84,11 +88,15 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 
 func killed():
+	var position = _enemy.position
 	self.queue_free()
 		
 	var rand_chance = manureChance.randf_range(0, 100)
-	if rand_chance > 0 && rand_chance <= 10:
-		print("DROPPED")
+	if rand_chance >= 0 && rand_chance <= 25:
+		
+		var bonus = _hearth.instance()
+		bonus.set_position(position)
+		nav.add_child(bonus)
 
 func _on_Enemy2_area_area_entered(area):
 	if area.name == "Area2D":
