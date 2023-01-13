@@ -3,11 +3,11 @@ extends KinematicBody2D
 var health = 1000
 
 func _ready():
+	$AnimationPlayer.play("PlantBeingAPlant")
 	pass 
 
 
 func _process(delta):
-	
 	if health <= 0:
 		get_tree().change_scene("res://Scene/End/EndScene.tscn")
 

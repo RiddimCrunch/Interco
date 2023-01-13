@@ -1,29 +1,70 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/temp/png-transparent-tree-large-green-tree-green-tree-illustration-leaf-branch-presentation-thumbnail.png" type="Texture" id=1]
+[ext_resource path="res://Assets/temp/BastiIlie.png" type="Texture" id=1]
 [ext_resource path="res://Tree.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 7.0
+height = 11.5
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 12.0
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 7.0
+height = 12.0
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=["Tree"]]
+[sub_resource type="Animation" id=3]
+resource_name = "PlantBeingAPlant"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 3, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Tree" type="KinematicBody2D" groups=["Tree"]]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+position = Vector2( 0, 5 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 9.53674e-07 )
-scale = Vector2( 0.0791667, 0.0791667 )
 texture = ExtResource( 1 )
+hframes = 8
 
 [node name="Tree_area" type="Area2D" parent="."]
 
 [node name="HitBox" type="CollisionShape2D" parent="Tree_area"]
-shape = SubResource( 2 )
+position = Vector2( 0, 5 )
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/PlantBeingAPlant = SubResource( 3 )
+anims/RESET = SubResource( 4 )
 
 [connection signal="area_entered" from="Tree_area" to="." method="_on_Area2D_area_entered"]
