@@ -457,6 +457,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
+position = Vector2( 506, 334 )
 
 [node name="Hearth" parent="Navigation2D" instance=ExtResource( 9 )]
 position = Vector2( 317, -13 )
@@ -477,45 +478,9 @@ position = Vector2( 207, 312 )
 position = Vector2( 605, -205 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-position = Vector2( 507, 331 )
-navpoly = SubResource( 29 )
-
-[node name="SpawnPoints" type="Node2D" parent="Navigation2D"]
+visible = false
 position = Vector2( 0, 2 )
-script = ExtResource( 18 )
-
-[node name="TL" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 51, 48 )
-
-[node name="TM" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 513, 43 )
-
-[node name="TR" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 996, 46 )
-
-[node name="ML" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 38, 314 )
-
-[node name="MR" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 990, 322 )
-
-[node name="BL" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 54, 548 )
-
-[node name="BM" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 502, 560 )
-
-[node name="BR" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( 991, 564 )
-
-[node name="MobTimer" type="Timer" parent="Navigation2D/SpawnPoints"]
-autostart = true
-
-[node name="CoolDown" type="Timer" parent="Navigation2D/SpawnPoints"]
-wait_time = 10.0
-
-[node name="SpawnRate" type="Timer" parent="Navigation2D/SpawnPoints"]
-wait_time = 2.0
+navpoly = SubResource( 29 )
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 2 )
@@ -554,6 +519,4 @@ position = Vector2( 512, 300 )
 
 [connection signal="timeout" from="Spawner/MobTimer" to="Spawner" method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="Navigation2D/SpawnPoints/MobTimer" to="Navigation2D/SpawnPoints" method="_on_MobTimer_timeout"]
-[connection signal="timeout" from="Navigation2D/SpawnPoints/CoolDown" to="Navigation2D/SpawnPoints" method="_on_CoolDown_timeout"]
 [connection signal="pressed" from="Pause/PauseMenu/PauseMenu/Resume" to="Pause" method="_on_Resume_pressed"]
