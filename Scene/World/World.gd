@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var player = $Player
-onready var enemy = $Navigation2D/Enemy
+onready var enemy = $Navigation2D/"."
 export(PackedScene) var mob_scene
  
  

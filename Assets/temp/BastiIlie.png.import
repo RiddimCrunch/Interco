@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BastiIlie_1.png-2a749f7050f372fd3b21ceee3230e25b.stex"
+path="res://.import/BastiIlie.png-b969dfedb68a81d413eed80202fd9a4a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/temp/BastiIlie_1.png"
-dest_files=[ "res://.import/BastiIlie_1.png-2a749f7050f372fd3b21ceee3230e25b.stex" ]
+source_file="res://Assets/temp/BastiIlie.png"
+dest_files=[ "res://.import/BastiIlie.png-b969dfedb68a81d413eed80202fd9a4a.stex" ]
 
 [params]
 
