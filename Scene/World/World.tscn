@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Assets/TileSet/Cote_Gauche.png" type="Texture" id=14]
 [ext_resource path="res://Assets/temp/decore_exterieur_eau.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Menu/Main_Menu.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Music/Wave2-5-Song.wav" type="AudioStream" id=17]
 [ext_resource path="res://Assets/Menu/Quitter.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Menu/Quitter_hover.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Menu/Continuer_hover.png" type="Texture" id=26]
@@ -508,6 +509,7 @@ curve = SubResource( 2 )
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )
@@ -551,6 +553,9 @@ texture_hover = ExtResource( 22 )
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 position = Vector2( 512, 300 )
+
+[node name="Theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
 
 [connection signal="timeout" from="Spawner/MobTimer" to="Spawner" method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

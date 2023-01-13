@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Enemies/Mushroom.png" type="Texture" id=1]
 [ext_resource path="res://enemy3.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Music/hitting.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Music/getting-hit.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 12.0416
@@ -125,5 +127,11 @@ collision_mask = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3_area"]
 position = Vector2( 0, 5 )
 shape = SubResource( 11 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="GetHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="area_entered" from="Enemy3_area" to="." method="_on_Enemy3_area_area_entered"]

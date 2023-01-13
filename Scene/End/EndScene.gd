@@ -4,7 +4,7 @@ extends Control
 onready var background = $Background
 
 func _ready():
-	pass
+	$Ded.play()
 
 func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):
