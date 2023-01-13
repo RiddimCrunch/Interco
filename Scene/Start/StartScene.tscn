@@ -220,6 +220,7 @@ expand = true
 scale = Vector2( 4, 4 )
 frames = SubResource( 19 )
 animation = "IdleRed"
+frame = 3
 playing = true
 
 [node name="Green" type="Button" parent="CustomMenu"]
