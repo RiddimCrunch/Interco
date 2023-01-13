@@ -13,7 +13,7 @@ enum {
 }
 onready var Player = $"../../Player"
 var current_state = Walk
-export var speed = 400
+export var speed = 300
 var path = []
 var cur_path_idx = 0
 var target = null
@@ -25,8 +25,10 @@ var manureChance = RandomNumberGenerator.new()
 var lookingRight = true
 
 onready var nav = get_parent()
-onready var raycast = $RayCast2D
+onready var raycast  = $RayCast2D
 onready var raycast2 = $RayCast2D2
+onready var raycast3 = $RayCast2D3
+onready var raycast4 = $RayCast2D4
 onready var _animation = $AnimationTree.get("parameters/playback")
 onready var _enemy = $"."
 onready var _hearth = preload("res://Hearth.tscn")
@@ -51,13 +53,19 @@ func _process(delta):
 		Walk:
 			_animation.travel("Walk")
 			
-			if raycast.is_colliding() || raycast2.is_colliding():
+			if raycast.is_colliding() || raycast2.is_colliding() || raycast3.is_colliding() || raycast3.is_colliding():
 				var collision
 				if raycast.is_colliding():
 					collision = raycast.get_collider()
 					self.scale.x = 1.5
-				else:
+				elif raycast4.is_colliding():
+					collision = raycast4.get_collider()
+					self.scale.x = 1.5
+				elif raycast2.is_colliding():
 					collision = raycast2.get_collider()
+					self.scale.x = -1.5
+				elif raycast3.is_colliding():
+					collision = raycast3.get_collider()
 					self.scale.x = -1.5
 				
 				if collision.is_in_group("Player"):

@@ -3,6 +3,7 @@ extends Node2D
 var enemy1 = preload("res://Enemy.tscn")
 var enemy2 = preload("res://Enemy2.tscn")
 var enemy3 = preload("res://Enemy3.tscn")
+var mantis = preload("res://Mantis.tscn")
 
 export var num_enemies = 50
 export var second_between_spawns: float = 1
@@ -17,7 +18,6 @@ var pos_list = ["TL", "TM", "TR",
 
 onready var timer = $MobTimer
 
-var wave = 0
 var enemies_remaining_to_spawn
 var array
 var enemy
@@ -39,9 +39,7 @@ func _process(delta):
 func _on_MobTimer_timeout():
 	
 	if enemies_remaining_to_spawn > 0:
-		wave += 1
-		#print(enemies_remaining_to_spawn)
-		#print(len(array))
+		
 		var rand_enem = randi() % enemies_list.size()
 
 		var new_enemy = enemies_list[rand_enem].instance()
@@ -54,26 +52,15 @@ func _on_MobTimer_timeout():
 		new_enemy.position = get_node(pos_list[rand_pos]).position
 		
 		#print(new_enemy.position)
-		print(enemies_remaining_to_spawn)
+		print("This was enemy: ", enemies_remaining_to_spawn)
 		enemies_remaining_to_spawn -= 1
 	
-	
-		#if len(array) == limit_enemy:
-		#	print("wave done")
-		#	$CoolDown.start()
-		#	wave_done()
-		#		
-		#	if enemies_remaining_to_spawn == 0:
-		#		array = get_tree().get_nodes_in_group("Enemy")
-		#	if array == []:
-		#		enemies_remaining_to_spawn = num_enemies
-				
-func wave_done():
-	
-	if $CoolDown.time_left > 0:
-		print($CoolDown.time_left)
-
-
-func _on_CoolDown_timeout():
-	if array == []:
-		timer.start()
+	elif enemies_remaining_to_spawn == 0 && array == []:
+		enemies_remaining_to_spawn -= 1
+		print("Enemy is... Mantis!")
+		
+		randomize()
+		
+		var boss = mantis.instance()
+		scene_root.add_child(boss)
+		boss.position = get_node("BossPosition").position
