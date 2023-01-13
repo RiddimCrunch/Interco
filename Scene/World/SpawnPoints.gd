@@ -4,7 +4,7 @@ var enemy1 = preload("res://Enemy.tscn")
 var enemy2 = preload("res://Enemy2.tscn")
 var enemy3 = preload("res://Enemy3.tscn")
 
-export var num_enemies = 20
+export var num_enemies = 50
 export var second_between_spawns: float = 1
 
 var enemies_list = [
@@ -18,7 +18,6 @@ var pos_list = ["TL", "TM", "TR",
 onready var timer = $MobTimer
 
 var wave = 0
-var limit_enemy = 20
 var enemies_remaining_to_spawn
 var array
 var enemy
@@ -59,15 +58,15 @@ func _on_MobTimer_timeout():
 		enemies_remaining_to_spawn -= 1
 	
 	
-		if len(array) == limit_enemy:
-			print("wave done")
-			$CoolDown.start()
-			wave_done()
-				
-			if enemies_remaining_to_spawn == 0:
-				array = get_tree().get_nodes_in_group("Enemy")
-			if array == []:
-				enemies_remaining_to_spawn = num_enemies
+		#if len(array) == limit_enemy:
+		#	print("wave done")
+		#	$CoolDown.start()
+		#	wave_done()
+		#		
+		#	if enemies_remaining_to_spawn == 0:
+		#		array = get_tree().get_nodes_in_group("Enemy")
+		#	if array == []:
+		#		enemies_remaining_to_spawn = num_enemies
 				
 func wave_done():
 	

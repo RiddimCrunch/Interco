@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 #var speed = 10
-var treeDamage = 3
+var treeDamage = 1
 var health = 10
 export var dammage = 1
 var motion = Vector2.ZERO

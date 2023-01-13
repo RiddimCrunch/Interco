@@ -20,7 +20,7 @@ func _on_Hearth_body_entered(body):
 		
 		body.health += healthValue
 		
-		var overflow = body.health - 100
+		var overflow = body.health - 200
 		
 		if overflow > 0:
 			body.health -= overflow
