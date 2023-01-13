@@ -24,6 +24,7 @@ enum { MOVE, ATTACK, IDLE }
 var states = MOVE
 
 func _ready():
+	_sprite.texture = Global.curr_gnome
 	state_machine = $AnimationTree.get("parameters/playback")
 	
 func _input(event):
