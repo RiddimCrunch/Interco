@@ -30,6 +30,8 @@ onready var raycast2 = $RayCast2D2
 onready var _animation = $AnimationTree.get("parameters/playback")
 onready var _enemy = $"."
 onready var _hearth = preload("res://Hearth.tscn")
+onready var _playerHealthBar = $"../../UI/PlayerHealth"
+onready var _TreeHealthBar = $"../../Tree/TreeHealthBar"
 
 func move_to(_location):
 	var _target = _location
@@ -62,11 +64,13 @@ func _process(delta):
 				if collision.is_in_group("Player"):
 					_animation.travel("Attack")
 					collision.health -= dammage
+					collision.get_node("PlayerHealthBar").value = collision.health
 					#print(collision.health)
 				elif collision.is_in_group("Tree"):
 					_animation.travel("Attack")
 					collision.health -= treeDamage
-					print(collision.health)
+					#print(collision.health)
+					_TreeHealthBar.value = collision.health
 	
 	if health <= 0:
 		killed()

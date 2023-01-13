@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
@@ -384,6 +384,12 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 7/shapes = [  ]
 7/z_index = 0
 
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0, 0.643137, 0.392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0, 0.247059, 0.0784314, 1 )
+
 [sub_resource type="NavigationPolygon" id=29]
 vertices = PoolVector2Array( -484, -307, 512, -308, 509, 246, -486, 250 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
@@ -393,6 +399,12 @@ outlines = [ PoolVector2Array( -484, -307, 512, -308, 509, 246, -486, 250 ) ]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1024, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 8 )
 }
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.52549, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.14902, 0, 0, 1 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -424,9 +436,17 @@ tile_data = PoolIntArray( -327694, 3, 0, -327693, 3, 1, -327692, 3, 1, -327691, 
 position = Vector2( 503, 316 )
 scale = Vector2( 4, 4 )
 
-[node name="Hearth" parent="." instance=ExtResource( 9 )]
-position = Vector2( 768, 330 )
-scale = Vector2( 4, 4 )
+[node name="TreeHealthBar" type="ProgressBar" parent="Tree"]
+margin_left = -16.0
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 22.0
+rect_scale = Vector2( 1, 0.5 )
+custom_styles/fg = SubResource( 32 )
+custom_styles/bg = SubResource( 33 )
+max_value = 1000.0
+value = 1000.0
+percent_visible = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 pause_mode = 2
@@ -448,17 +468,23 @@ autostart = true
 [node name="Navigation2D" type="Navigation2D" parent="."]
 position = Vector2( 506, 334 )
 
+[node name="Hearth" parent="Navigation2D" instance=ExtResource( 9 )]
+position = Vector2( 317, -13 )
+
+[node name="Hearth2" parent="Navigation2D" instance=ExtResource( 9 )]
+position = Vector2( 372, -10 )
+
 [node name="Enemy3" parent="Navigation2D" instance=ExtResource( 18 )]
-position = Vector2( 389, 77 )
+position = Vector2( 476, -21 )
 
 [node name="Enemy2" parent="Navigation2D" instance=ExtResource( 16 )]
-position = Vector2( 585, 8 )
+position = Vector2( 102, 73 )
 
 [node name="Enemy" parent="Navigation2D" instance=ExtResource( 4 )]
-position = Vector2( 592, 218 )
+position = Vector2( 207, 312 )
 
 [node name="Mantis" parent="Navigation2D" instance=ExtResource( 17 )]
-position = Vector2( 626, 101 )
+position = Vector2( 605, -205 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 visible = false
@@ -470,11 +496,34 @@ curve = SubResource( 2 )
 
 [node name="UI" type="Control" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 558.0
+margin_bottom = 117.0
+
+[node name="PlayerHealth" type="ProgressBar" parent="UI"]
+anchor_right = 1.011
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_right = -8.05005
+margin_bottom = -24.0
+custom_styles/fg = SubResource( 30 )
+custom_styles/bg = SubResource( 31 )
+value = 100.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/PlayerHealth"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = -6.0
+margin_right = -3.0
+margin_bottom = 3.0
+text = "
+                                         Player health:"
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 6 )
@@ -488,7 +537,6 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 5 )
-expand = true
 
 [node name="PauseMenu" type="VBoxContainer" parent="Pause/PauseMenu"]
 margin_left = 385.0
