@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-[gd_scene load_steps=49 format=2]
-=======
+
 [gd_scene load_steps=61 format=2]
->>>>>>> 250d5589b5f403bda9cca1b0accb6a9062044e13
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scene/World/World.gd" type="Script" id=2]
