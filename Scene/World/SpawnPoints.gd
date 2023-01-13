@@ -39,9 +39,7 @@ func _process(delta):
 func _on_MobTimer_timeout():
 	
 	if enemies_remaining_to_spawn > 0:
-		wave += 1
-		#print(enemies_remaining_to_spawn)
-		#print(len(array))
+		
 		var rand_enem = randi() % enemies_list.size()
 
 		var new_enemy = enemies_list[rand_enem].instance()
@@ -54,26 +52,9 @@ func _on_MobTimer_timeout():
 		new_enemy.position = get_node(pos_list[rand_pos]).position
 		
 		#print(new_enemy.position)
-		print(enemies_remaining_to_spawn)
+		print("This was enemy: ", enemies_remaining_to_spawn)
 		enemies_remaining_to_spawn -= 1
 	
-	
-		#if len(array) == limit_enemy:
-		#	print("wave done")
-		#	$CoolDown.start()
-		#	wave_done()
-		#		
-		#	if enemies_remaining_to_spawn == 0:
-		#		array = get_tree().get_nodes_in_group("Enemy")
-		#	if array == []:
-		#		enemies_remaining_to_spawn = num_enemies
-				
-func wave_done():
-	
-	if $CoolDown.time_left > 0:
-		print($CoolDown.time_left)
-
-
-func _on_CoolDown_timeout():
-	if array == []:
-		timer.start()
+	elif enemies_remaining_to_spawn == 0:
+		enemies_remaining_to_spawn -= 1
+		print("Enemy is... Mantis!")

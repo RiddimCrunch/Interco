@@ -490,6 +490,7 @@ position = Vector2( -15, 215 )
 position = Vector2( 474, 219 )
 
 [node name="MobTimer" type="Timer" parent="Navigation2D/SpawnPoints"]
+wait_time = 2.0
 autostart = true
 
 [node name="CoolDown" type="Timer" parent="Navigation2D/SpawnPoints"]
