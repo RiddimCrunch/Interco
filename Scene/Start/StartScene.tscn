@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Scene/Start/StartScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/menu_principal.png" type="Texture" id=2]
@@ -24,7 +24,6 @@
 [ext_resource path="res://Assets/Player/Gnome-blue.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Player/Gnome-green.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Player/Gnome.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Music/Wave1-5-Song.wav" type="AudioStream" id=25]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 22 )
@@ -208,7 +207,6 @@ texture = ExtResource( 14 )
 expand = true
 
 [node name="CustomMenu" type="Popup" parent="."]
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -243,7 +241,6 @@ margin_bottom = 20.0
 rect_scale = Vector2( 3, 2 )
 
 [node name="SonMenu" type="Popup" parent="."]
-visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -252,22 +249,6 @@ margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 16 )
 expand = true
-
-[node name="VolMaster" type="HSlider" parent="SonMenu"]
-margin_left = 384.0
-margin_top = 291.0
-margin_right = 634.0
-margin_bottom = 341.0
-rect_scale = Vector2( 1, 1.5 )
-min_value = -80.0
-max_value = 0.0
-
-[node name="Label" type="Label" parent="SonMenu"]
-margin_left = 463.0
-margin_top = 305.0
-margin_right = 560.0
-margin_bottom = 319.0
-text = "Master Volume"
 
 [node name="CreditMenu" type="Popup" parent="."]
 visible = true
@@ -282,8 +263,7 @@ expand = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Main" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 25 )
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="MainMenu/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="MainMenu/Option" to="." method="_on_Option_pressed"]
@@ -295,4 +275,3 @@ stream = ExtResource( 25 )
 [connection signal="pressed" from="CustomMenu/Green" to="." method="_on_Green_pressed"]
 [connection signal="pressed" from="CustomMenu/Red" to="." method="_on_Red_pressed"]
 [connection signal="pressed" from="CustomMenu/Blue" to="." method="_on_Blue_pressed"]
-[connection signal="value_changed" from="SonMenu/VolMaster" to="." method="_on_VolMaster_value_changed"]

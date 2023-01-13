@@ -7,7 +7,7 @@ export(PackedScene) var mob_scene
  
  
 func _ready():
-	$Theme.play()
+	pass # Replace with function body.
 
 
 func _process(delta):

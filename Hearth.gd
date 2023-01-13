@@ -19,7 +19,6 @@ func _on_Hearth_body_entered(body):
 		body = body as Player
 		
 		body.health += healthValue
-		$HpUp.play()
 		
 		var overflow = body.health - 200
 		

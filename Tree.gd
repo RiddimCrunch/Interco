@@ -10,9 +10,6 @@ func _ready():
 func _process(delta):
 	if health <= 0:
 		get_tree().change_scene("res://Scene/End/EndScene.tscn")
-		
-	if health == 300:
-		$LowHp.play()
 
 
 func _on_Area2D_area_entered(area):
