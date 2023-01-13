@@ -477,6 +477,7 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 5 )
+expand = true
 
 [node name="PauseMenu" type="VBoxContainer" parent="Pause/PauseMenu"]
 margin_left = 385.0
