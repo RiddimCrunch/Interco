@@ -14,6 +14,10 @@ onready var controleMenu = $ControleMenu
 onready var customMenu = $CustomMenu
 onready var sonMenu = $SonMenu
 onready var creditMenu = $CreditMenu
+onready var CustomGnome = $CustomMenu/CustomGnome
+onready var GreenButton = $CustomMenu/Green
+onready var RedButton = $CustomMenu/Red
+onready var BlueButton = $CustomMenu/Blue
 
 var idx = 0
 
@@ -32,6 +36,11 @@ func _process(delta):
 	var offsetVectorSousMenu = Vector2(OS.window_size.x/2 - 125, OS.window_size.y/2 + 20)
 	var offsetVectorMainMenuFull = Vector2(OS.window_size.x/2 - 240, OS.window_size.y/2 + 130)
 	var offsetVectorSousMenuFull = Vector2(OS.window_size.x/2 - 240, OS.window_size.y/2 + 30)
+	var offsetVectorGnome = Vector2(OS.window_size.x/2, OS.window_size.y/2 + 60)
+	var offsetVectorButtonGreen = Vector2(OS.window_size.x/2 - 100, OS.window_size.y/2 + 150)
+	var offsetVectorButtonRed = Vector2(OS.window_size.x/2 - 30, OS.window_size.y/2 + 150)
+	var offsetVectorButtonBlue = Vector2(OS.window_size.x/2 + 40, OS.window_size.y/2 + 150)
+	
 	background.set_size(offsetVector)
 	optionBackground.set_size(offsetVector)
 	controleBackground.set_size(offsetVector)
@@ -39,6 +48,10 @@ func _process(delta):
 	sonBackground.set_size(offsetVector)
 	creditBackground.set_size(offsetVector)
 	mainMenu.set_position(offsetVectorMainMenu)
+	CustomGnome.set_position(offsetVectorGnome)
+	GreenButton.set_position(offsetVectorButtonGreen)
+	RedButton.set_position(offsetVectorButtonRed)
+	BlueButton.set_position(offsetVectorButtonBlue)
 	
 	if OS.window_fullscreen == true:
 		mainMenu.set_scale(Vector2(1.9, 1.9))
@@ -91,3 +104,15 @@ func _on_Son_pressed():
 func _on_Crdit_pressed():
 	creditMenu.show()
 	idx +=1
+
+
+func _on_Green_pressed():
+	$CustomMenu/CustomGnome.animation = "IdleGreen"
+
+
+func _on_Blue_pressed():
+	$CustomMenu/CustomGnome.animation = "IdleBlue"
+
+
+func _on_Red_pressed():
+	$CustomMenu/CustomGnome.animation = "IdleRed"
