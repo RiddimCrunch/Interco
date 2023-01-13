@@ -13,7 +13,7 @@ enum {
 }
 onready var Player = $"../../Player"
 var current_state = Walk
-export var speed = 175
+export var speed = 200
 var path = []
 var cur_path_idx = 0
 var target = null
@@ -88,10 +88,12 @@ func _on_Enemy_area_area_entered(area):
 		if player.get_readyAttack():
 			#print("Enemy hit")
 			health -= player.dammage
+			$Hit.play()
 			#print(health)
 
 func killed():
 	var position = _enemy.position
+	$Hit.play()
 	self.queue_free()
 		
 	var rand_chance = manureChance.randf_range(0, 100)

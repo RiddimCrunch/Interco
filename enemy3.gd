@@ -88,6 +88,7 @@ func get_target_path(target_pos):
 
 func killed():
 	var position = _enemy.position
+	$Hit.play()
 	self.queue_free()
 		
 	var rand_chance = manureChance.randf_range(0, 100)
@@ -104,4 +105,5 @@ func _on_Enemy3_area_area_entered(area):
 		if player.get_readyAttack():
 			#print("Enemy hit")
 			health -= player.dammage
+			$Hit.play()
 			#print(health)

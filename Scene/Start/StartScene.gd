@@ -32,7 +32,7 @@ func _input(event):
 		idx -= 1
 
 func _ready():
-	pass
+	$Main.play()
 
 func _process(delta):
 	var offsetVector = Vector2(OS.window_size.x, OS.window_size.y)
@@ -124,3 +124,7 @@ func _on_Red_pressed():
 	$CustomMenu/CustomGnome.animation = "IdleRed"
 	
 	Global.curr_gnome = red_hat
+
+
+func _on_VolMaster_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)

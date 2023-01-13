@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Enemies/fly.png" type="Texture" id=1]
 [ext_resource path="res://Enemy2.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Music/hitting.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 5.0
@@ -131,5 +132,8 @@ tree_root = SubResource( 12 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 13 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="area_entered" from="Enemy2_area" to="." method="_on_Enemy2_area_area_entered"]

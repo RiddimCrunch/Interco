@@ -88,6 +88,7 @@ func get_target_path(target_pos):
 
 func killed():
 	var position = _enemy.position
+	$Hit.play()
 	self.queue_free()
 		
 	var rand_chance = manureChance.randf_range(0, 100)

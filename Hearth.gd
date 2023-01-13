@@ -1,6 +1,6 @@
 extends Area2D
 
-var healthValue = 30
+var healthValue = 25
 onready var _TreeHealthBar = $"../../Tree/TreeHealthBar"
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +19,7 @@ func _on_Hearth_body_entered(body):
 		body = body as Player
 		
 		body.health += healthValue
+		$HpUp.play()
 		
 		var overflow = body.health - 200
 		

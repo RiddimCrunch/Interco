@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Assets/Enemies/Mantis.png" type="Texture" id=1]
 [ext_resource path="res://Mantis.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Music/hitting.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 34.4167, 12.3333 )
@@ -138,5 +139,8 @@ position = Vector2( -4.66667, -34 )
 enabled = true
 cast_to = Vector2( -66.6667, 31.3333 )
 collision_mask = 10
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="area_entered" from="Mantis_area" to="." method="_on_Mantis_area_area_entered"]

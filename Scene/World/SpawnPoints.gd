@@ -2,10 +2,10 @@ extends Node2D
 
 var enemy1 = preload("res://Enemy.tscn")
 var enemy2 = preload("res://Enemy2.tscn")
-var enemy3 = preload("res://Enemy3.tscn")
+var enemy3 = preload("res://enemy3.tscn")
 var mantis = preload("res://Mantis.tscn")
 
-export var num_enemies = 50
+export var num_enemies = 0
 export var second_between_spawns: float = 1
 
 var enemies_list = [
@@ -64,3 +64,5 @@ func _on_MobTimer_timeout():
 		var boss = mantis.instance()
 		scene_root.add_child(boss)
 		boss.position = get_node("BossPosition").position
+
+

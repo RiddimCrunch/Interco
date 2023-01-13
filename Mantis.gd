@@ -96,14 +96,10 @@ func get_target_path(target_pos):
 
 func killed():
 	var position = _enemy.position
+	$Hit.play()
 	self.queue_free()
 		
-	var rand_chance = manureChance.randf_range(0, 100)
-	if rand_chance >= 0 && rand_chance <= 25:
-		
-		var bonus = _hearth.instance()
-		bonus.set_position(position)
-		nav.add_child(bonus)
+	get_tree().change_scene("res://Scene/win/win.tscn")
 
 func _on_Mantis_area_area_entered(area):
 	if area.name == "Area2D":
@@ -112,5 +108,6 @@ func _on_Mantis_area_area_entered(area):
 		if player.get_readyAttack():
 			#print("Enemy hit")
 			health -= player.dammage
+			$Hit.play()
 			#print(health)
 
