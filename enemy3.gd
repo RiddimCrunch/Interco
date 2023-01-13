@@ -28,8 +28,6 @@ onready var nav = get_parent()
 onready var raycast = $RayCast2D
 onready var raycast2 = $RayCast2D2
 onready var _animation = $AnimationTree.get("parameters/playback")
-onready var _enemy = $"."
-onready var _hearth = preload("res://Hearth.tscn")
 
 func move_to(_location):
 	var _target = _location
@@ -86,15 +84,11 @@ func get_target_path(target_pos):
 	path = nav.get_simple_path(global_transform.origin, target_pos)
 
 func killed():
-	var position = _enemy.position
 	self.queue_free()
 		
 	var rand_chance = manureChance.randf_range(0, 100)
-	if rand_chance >= 0 && rand_chance <= 25:
-		
-		var bonus = _hearth.instance()
-		bonus.set_position(position)
-		nav.add_child(bonus)
+	if rand_chance > 0 && rand_chance <= 10:
+		print("DROPPED")
 
 func _on_Enemy3_area_area_entered(area):
 	if area.name == "Area2D":
