@@ -112,5 +112,6 @@ func _on_Mantis_area_area_entered(area):
 		if player.get_readyAttack():
 			#print("Enemy hit")
 			health -= player.dammage
+			$Hit.play()
 			#print(health)
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/temp/ui_coeur_vie_joueur.png" type="Texture" id=1]
 [ext_resource path="res://Hearth.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Music/Powerup.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -75,5 +76,8 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Levitate = SubResource( 2 )
 anims/RESET = SubResource( 3 )
+
+[node name="HpUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="." to="." method="_on_Hearth_body_entered"]

@@ -53,6 +53,9 @@ func _physics_process(delta):
 			states = IDLE
 		else:
 			states = MOVE
+		if Input.is_action_just_pressed("attack"):
+			$Fourche.play()
+			$Fourche.volume_db = -10
 		
 		var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
 		
@@ -74,6 +77,7 @@ func _physics_process(delta):
 				
 		if health <= 0:
 			get_tree().change_scene("res://Scene/End/EndScene.tscn")
+			
 
 
 func move_action():
