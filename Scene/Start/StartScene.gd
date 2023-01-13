@@ -19,6 +19,10 @@ onready var GreenButton = $CustomMenu/Green
 onready var RedButton = $CustomMenu/Red
 onready var BlueButton = $CustomMenu/Blue
 
+#onready var gnome_sprite = get_node("/root/Player/Sprite")
+var red_hat = preload("res://Assets/Player/Gnome.png")
+var green_hat = preload("res://Assets/Player/Gnome-green.png")
+var blue_hat = preload("res://Assets/Player/Gnome-blue.png")
 var idx = 0
 
 func _input(event):
@@ -108,11 +112,21 @@ func _on_Crdit_pressed():
 
 func _on_Green_pressed():
 	$CustomMenu/CustomGnome.animation = "IdleGreen"
-
-
+	
+	Global.curr_gnome = green_hat
+	
+	#gnome_sprite.texture = green_hat.texture
+	
 func _on_Blue_pressed():
 	$CustomMenu/CustomGnome.animation = "IdleBlue"
-
+	
+	Global.curr_gnome = blue_hat
+	
+	#gnome_sprite.texture = blue_hat.texture
 
 func _on_Red_pressed():
 	$CustomMenu/CustomGnome.animation = "IdleRed"
+	
+	Global.curr_gnome = red_hat
+
+	#gnome_sprite.texture = red_hat.texture
