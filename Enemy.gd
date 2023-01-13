@@ -46,7 +46,7 @@ func _process(delta):
 			pass
 		Walk:
 			_animation.travel("Walk")
-			#$Look.look_at(Player.global_transform.origin)
+			$Look.look_at(Player.global_transform.origin)
 			rotate(deg2rad($Look.rotation * turn_speed))
 			
 			if raycast.is_colliding():

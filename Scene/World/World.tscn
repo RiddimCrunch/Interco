@@ -439,20 +439,19 @@ wait_time = 0.1
 autostart = true
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
-position = Vector2( 46, -1 )
+position = Vector2( 15, 13 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
-visible = false
 navpoly = SubResource( 1 )
 
 [node name="Enemy3" parent="Navigation2D" instance=ExtResource( 9 )]
-position = Vector2( 831, 633 )
+position = Vector2( 1107, 344 )
 
 [node name="Enemy" parent="Navigation2D" instance=ExtResource( 4 )]
-position = Vector2( 736, 639 )
+position = Vector2( 1062, 470 )
 
 [node name="Enemy2" parent="Navigation2D" instance=ExtResource( 16 )]
-position = Vector2( 663, 645 )
+position = Vector2( 887, 272 )
 
 [node name="Path2D" type="Path2D" parent="."]
 visible = false
