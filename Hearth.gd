@@ -1,7 +1,6 @@
 extends Area2D
 
 var healthValue = 10
-onready var _playerHealthBar = $"../../UI/PlayerHealth"
 onready var _TreeHealthBar = $"../../Tree/TreeHealthBar"
 
 # Called when the node enters the scene tree for the first time.
