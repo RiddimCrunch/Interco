@@ -4,6 +4,9 @@ class_name Player
 onready var _weapon = $Fork
 onready var _sprite = $Sprite
 onready var _spriteFork = $Fork/Sprite2
+onready var pauseMenu = $"../Pause/PauseMenu"
+onready var camIn = $Sprite/Camera2D
+onready var camOut = $"../Camera2D"
 var state_machine
 
 const SPEED = 400
@@ -21,38 +24,53 @@ var states = MOVE
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
-
-func _physics_process(delta):
-	var input_vector = get_input()
 	
-	#Control if player move or not
-	if Input.is_action_pressed("attack"):
-		states = ATTACK
-	elif input_vector == Vector2.ZERO:
-		states = IDLE
-	else:
-		states = MOVE
-	
-	var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
-	
-	if dir != 0:
-		_sprite.scale.x = dir * 1.5
-		
-		if dir == -1:
-			lookingRight = false
+func _input(event):
+	if event.is_action_pressed("escape"):
+		if get_tree().paused != true:
+			get_tree().paused = true
+			pauseMenu.show()
+			camOut.current = true
+			camIn.current = false
 		else:
-			lookingRight = true
+			get_tree().paused = false
+			pauseMenu.hide()
+			camIn.current = true
+			camOut.current = false
+
 	
-	match states:
-		MOVE:
-			move_action()
-		ATTACK:
-			attack_action()
-		IDLE:
-			idle_action()
+func _physics_process(delta):
+	if get_tree().paused != true:
+		var input_vector = get_input()
+		
+		#Control if player move or not
+		if Input.is_action_pressed("attack"):
+			states = ATTACK
+		elif input_vector == Vector2.ZERO:
+			states = IDLE
+		else:
+			states = MOVE
+		
+		var dir = Input.get_action_strength("right") - Input.get_action_strength("left")
+		
+		if dir != 0:
+			_sprite.scale.x = dir * 1.5
 			
-	if health <= 0:
-		get_tree().change_scene("res://Scene/End/EndScene.tscn")
+			if dir == -1:
+				lookingRight = false
+			else:
+				lookingRight = true
+		
+		match states:
+			MOVE:
+				move_action()
+			ATTACK:
+				attack_action()
+			IDLE:
+				idle_action()
+				
+		if health <= 0:
+			get_tree().change_scene("res://Scene/End/EndScene.tscn")
 
 
 func move_action():
