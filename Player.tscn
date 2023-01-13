@@ -225,7 +225,8 @@ margin_right = -37.3333
 margin_bottom = -84.6667
 custom_styles/fg = SubResource( 30 )
 custom_styles/bg = SubResource( 31 )
-value = 100.0
+max_value = 200.0
+value = 200.0
 __meta__ = {
 "_editor_description_": ""
 }

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 #var speed = 10
 var treeDamage = 3
-var health = 30
+var health = 20
 export var dammage = 1
 var motion = Vector2.ZERO
 var screen_size = get_viewport_rect().size
@@ -13,7 +13,7 @@ enum {
 }
 onready var Player = $"../../Player"
 var current_state = Walk
-export var speed = 250
+export var speed = 150
 var path = []
 var cur_path_idx = 0
 var target = null
@@ -55,10 +55,10 @@ func _process(delta):
 				var collision
 				if raycast.is_colliding():
 					collision = raycast.get_collider()
-					self.scale.x = 1
+					self.scale.x = 1.5
 				else:
 					collision = raycast2.get_collider()
-					self.scale.x = -1
+					self.scale.x = -1.5
 				
 				if collision.is_in_group("Player"):
 					_animation.travel("Attack")

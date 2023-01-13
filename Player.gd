@@ -14,7 +14,7 @@ const SPEED = 400
 const ACCEL = 0.4
 
 var velocity = Vector2.ZERO
-var health = 100
+var health = 200
 var dammage = 10
 var readyAttack = false
 

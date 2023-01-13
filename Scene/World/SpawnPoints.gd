@@ -47,18 +47,15 @@ func _on_MobTimer_timeout():
 
 		var new_enemy = enemies_list[rand_enem].instance()
 		scene_root.add_child(new_enemy)
-		print(scene_root)
 		
 		randomize()
 		var rand_pos = randi() % pos_list.size()
 		randomize()
 		
-		print(get_node(pos_list[rand_pos]).position, "  ", get_node(pos_list[rand_pos]).name)
-		
 		new_enemy.position = get_node(pos_list[rand_pos]).position
 		
 		#print(new_enemy.position)
-		
+		print(enemies_remaining_to_spawn)
 		enemies_remaining_to_spawn -= 1
 	
 	

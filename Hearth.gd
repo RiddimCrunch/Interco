@@ -1,6 +1,6 @@
 extends Area2D
 
-var healthValue = 10
+var healthValue = 25
 onready var _TreeHealthBar = $"../../Tree/TreeHealthBar"
 
 # Called when the node enters the scene tree for the first time.
@@ -25,11 +25,10 @@ func _on_Hearth_body_entered(body):
 		if overflow > 0:
 			body.health -= overflow
 			
-			print(body.get_parent().get_child(3).name)
+			#print(body.get_parent().get_child(3).name)
 			var _tree = body.get_parent().get_child(3) 
 			_tree.health += overflow * 10
 			_TreeHealthBar.value = _tree.health
-			print("---------------------", _tree.health)
 		
 		body.get_node("PlayerHealthBar").value = body.health
 		self.queue_free()

@@ -475,7 +475,7 @@ position = Vector2( -4, -302 )
 position = Vector2( 479, -299 )
 
 [node name="ML" type="Position2D" parent="Navigation2D/SpawnPoints"]
-position = Vector2( -479, -31 )
+position = Vector2( -466, -31 )
 
 [node name="MR" type="Position2D" parent="Navigation2D/SpawnPoints"]
 position = Vector2( 473, -23 )

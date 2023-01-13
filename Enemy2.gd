@@ -13,7 +13,7 @@ enum {
 }
 onready var Player = $"../../Player"
 var current_state = Walk
-export var speed = 350
+export var speed = 250
 var path = []
 var cur_path_idx = 0
 var target = null
